@@ -214,3 +214,4 @@ numbers.forEach((h) => log("forEach", h));
 numbers.map(function (h) {
   console.log(h);
 });
+
