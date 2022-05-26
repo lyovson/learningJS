@@ -1,0 +1,11 @@
+:root {
+  --main-color: #fafafa;
+  --bck-color: #212121
+}
+
+body {
+    color: var(--main-color);
+    background: var(--bck-color);
+    font-family: monospace;
+    font-size: 2rem;
+}
