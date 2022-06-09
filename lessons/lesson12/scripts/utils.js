@@ -17,6 +17,8 @@ const getType = (val) => {
   return typeof val;
 };
 
+const reverseCall = (func) => (par1, par2) => func(par2, par1);
+
 const querySelector = (selector) => document.querySelector(selector);
 
 const querySelectorAll = (selector) => [...document.querySelectorAll(selector)];
@@ -71,4 +73,5 @@ export default {
   curry,
   curriedCreateElement,
   appendElements,
+  reverseCall,
 };
