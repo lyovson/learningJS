@@ -1,7 +1,8 @@
 import utils from "./utils.js";
+import card from "../components/card.js";
 
 const {
-  querySelector: qs,
+  querySelector: qs, // const qs = utils.querySelector
   querySelectorAll: qsa,
   createElement: ce,
   curriedCreateElement: cce,
@@ -9,46 +10,53 @@ const {
   curry,
 } = utils;
 
-const root = qs("#root");
-
-const h1 = ce("h1", { text: "Lesson 12" });
-
-const paragraph = ce("p", { text: "Lorem ipsum dolor sit amet." });
-
-// ae(h1, root);
-// ae(paragraph, root);
-
+// const root = qs("#root");
+// const h1 = ce("h1", { text: "Hello, World!" });
+// aes([h1], root);
 aes(
   [
-    h1,
+    ce("h1", {
+      text: "Hello, World!",
+      id: "heading",
+      style: { color: "steelblue" },
+    }),
+    ce("p", { text: "This is a test site!", id: "subHeading" }),
+
     [
-      ce("div", { id: "mama" }),
+      ce("div", {
+        style: {
+          display: "flex",
+          gap: "1rem",
+          justifyContent: "space-evenly",
+        },
+      }),
       [
-        ce("div", { classList: ["section"] }),
-        ce("h3", { text: "section 1:" }),
-        paragraph,
-        ce("p", { text: "London is the capital of great britain" }),
+        card({ id: "card1" }),
+        ce("h3", { text: "Card 1" }),
+        ce("p", {
+          text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+        }),
+        ce("img", {
+          src: "https://peakvisor.com/img/news/mount_fuji.jpg",
+          alt: "mountain",
+          style: { width: "100%" },
+        }),
       ],
       [
-        ce("div", { classList: ["section"] }),
-        ce("h3", { text: "section 2:" }),
-        ce("p", { text: "another paragraph" }),
-        [
-          ce("div", { id: "imgDiv" }),
-          ce("p", { text: "image with p" }),
-          ce("img", {
-            id: "featuredImage",
-            src: "https://peakvisor.com/img/news/mount_fuji.jpg",
-            alt: "image",
-            style: {
-              width: "90%",
-              borderRadius: "2rem",
-            },
-            dataSet: { cat: "meow" },
-          }),
-        ],
+        card({ id: "card2", style: {} }),
+
+        ce("h3", { text: "Card 2" }),
+        ce("p", {
+          text: "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+        }),
+        ce("img", {
+          src: "https://res.cloudinary.com/dtpgi0zck/image/upload/s--OVQzqYFL--/c_fit,h_580,w_860/v1/EducationHub/photos/jinsha-river.jpg",
+          alt: "river",
+          style: { width: "100%" },
+        }),
       ],
+      [card({ id: "card3" }), ce("h2", { text: "another card" })],
     ],
   ],
-  root
+  qs("#root")
 );

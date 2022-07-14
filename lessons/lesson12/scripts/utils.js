@@ -23,8 +23,20 @@ const querySelector = (selector) => document.querySelector(selector);
 
 const querySelectorAll = (selector) => [...document.querySelectorAll(selector)];
 
-const createElement = (tag, params) => {
+const createElement = (tag, params = {}) => {
   const el = document.createElement(tag);
+
+  /*
+    { 
+      key: value,
+      name: Rafa,
+      lastName: Lyovson
+    } 
+
+    Object.entries ->[[key, value], [name, Rafa], [lastName, Lyovson]]
+
+  */
+
   Object.entries(params).forEach(([key, value]) => {
     if (key === "text") {
       el.innerText = value;
@@ -37,12 +49,14 @@ const createElement = (tag, params) => {
     }
 
     if (key === "dataSet") {
-      Object.entries(value).forEach(([k, v]) => (el.dataset[k] = v));
+      Object.entries(value).forEach(
+        ([key, value]) => (el.dataset[key] = value)
+      );
       return;
     }
 
     if (key === "style") {
-      Object.entries(value).forEach(([k, v]) => (el.style[k] = v));
+      Object.entries(value).forEach(([key, value]) => (el.style[key] = value));
       return;
     }
 
@@ -52,20 +66,34 @@ const createElement = (tag, params) => {
 };
 
 const curriedCreateElement = curry(createElement);
+// const btn = cce("button") const blueBtn = btn({style: {background: "blue"}})
+// cce(tag)(params)
 
-const appendElements = (els, parent) => {
-  els.forEach((el) => {
-    if (getType(el) !== "array") {
-      parent.append(el);
+const appendElements = (elements, parent) => {
+  //      ( [ h3, [div, p], p ] , div )
+  elements.forEach((element) => {
+    if (getType(element) !== "array") {
+      parent.append(element);
       return;
     }
     // el == array
-    parent.append(el[0]);
-    appendElements(el.slice(1), el[0]);
+    parent.append(element[0]);
+
+    appendElements(element.slice(1), element[0]); // ( [p], div )
   });
 };
 
-//ae([h1, p] , root)
+// const body = querySelector("body");
+// const h1 = createElement("h1", { text: "Hello, World!" });
+// const subheading = createElement("p", {
+//   id: "subheading",
+//   text: "This is a test website!",
+// });
+// appendElements(
+//   [h1, subheading, [div, [div, h3, p, img], [div, h3, p, img]]],
+//   body
+// );
+
 export default {
   querySelector,
   querySelectorAll,

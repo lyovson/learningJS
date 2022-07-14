@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+:root {
+    --dark-color: #212121;
+    --light-color:#fafafa;
+    --accent-color: #881337
+}
+
 body {
-    color: #fafafa;
-    background: #212121;
-    font-family: monospace;
-    font-size: 2rem;
+    color: var(--light-color);
+    background: var(--dark-color);
+    font-family: 'Kdam Thmor Pro'
 }
 
