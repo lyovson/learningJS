@@ -192,3 +192,14 @@ const car = {
 };
 
 getName(car); //?
+
+const Card = React.createElement("div", { id: "heading" }, `Hello World!`);
+
+<Card>
+  <Btn text="push me"></Btn>
+</Card>; //jsx
+<h1></h1>;
+
+function Btn(props) {
+  return <button>{props.text}</button>;
+}

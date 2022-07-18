@@ -1,0 +1,60 @@
+*  library - small, adds features, you call it. Exapmples - React, jQuery
+
+* framework - big, adds structure, it calls your code. Exapmples - Express, Angular.JS
+
+## hoisting
+
+sum(1, 2); //?
+
+function sum(a, b) {
+  return a + b;
+}
+
+// const sum = (a, b) => a + b;
+
+
+## type coercion
+
+"1" + 1 = "11"
+
+## currying 
+
+sum (a, b) -> sum(a)(b)
+
+## partial application 
+
+sum(a)(b) -> const addA = sum(a) -> addA(b)
+
+## arity 
+
+function.length() -> how many arguments does the function take
+
+## scope 
+
+Global scope - declarations on thhe file level
+Function scope - declarations inside the function body
+
+## closure
+
+function init() {
+  var name = 'Mozilla'; // name is a local variable created by init
+  function displayName() {
+    // displayName() is the inner function, a closure
+    console.log(name); // use variable declared in the parent function
+  }
+  displayName();
+}
+init();
+
+## prototype 
+
+class Person{}
+
+class Student extends Person{}
+
+prototype chain: Student -> Person -> Object
+
+## types of functions
+
+reducer -> goes in reducer
+predicate -> goes in filter 
